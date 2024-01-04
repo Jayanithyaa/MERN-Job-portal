@@ -4,6 +4,12 @@ import {
 import App from "../App";
 import Home from "../Pages/Home";
 import About from "../Pages/About";
+import CreateJob from "../Pages/CreateJob";
+import MyJobs from "../Pages/MyJobs";
+import SalaryPage from "../Pages/SalaryPage";
+import UpdateJob from "../Pages/updateJob";
+import Login from "../components/login";
+import JobDetails from "../Pages/JobDetails";
 
 const router = createBrowserRouter([
     {
@@ -12,9 +18,12 @@ const router = createBrowserRouter([
       children: [
         {path:'/', element:<Home/>},
         {path:'/about', element:<About/>},
-        {path:'/', element:<Home/>},
-        {path:'/', element:<Home/>}
-
+        {path:'/post-job', element:<CreateJob/>},
+        {path:'/my-job', element:<MyJobs/>},
+        {path:'/salary', element:<SalaryPage/>},
+        {path:'edit-job/:id', element:<UpdateJob/>, loader:({params}) => fetch(`http://localhost:3000/all-jobs/${params.id}`)},
+        {path:'/login', element:<Login/>},
+        {path:'/job/:id', element:<JobDetails/>}
       ]
     },
   ]);
